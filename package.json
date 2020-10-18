@@ -1,0 +1,83 @@
+{
+  "name": "laboratorio-parcel",
+  "version": "0.1.0",
+  "private": false,
+  "description": "laboratorio parcel",
+  "keywords": [
+    "laboratorio",
+    "parcel",
+    "poc",
+    "ejercicio"
+  ],
+  "homepage": "https://github.com/krbaio3/laboratorio-parcel#readme",
+  "bugs": {
+    "url": "https://github.com/krbaio3/laboratorio-parcel/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/krbaio3/laboratorio-parcel.git"
+  },
+  "license": "MIT",
+  "author": "KrBaIO3 <krbaio3@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && parcel ./src/index.html",
+    "build:prod": "rimraf dist && parcel build ./src/index.html",
+    "commit": "npx cz",
+    "eslint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "lint": "run-s eslint prettier",
+    "prettier": "prettier --write .",
+    "start": "rimraf dist && parcel ./src/index.html --open",
+    "stylint": "stylelint \"**/*.css\" --fix",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{css,scss}*": [
+      "stylelint \"**/*.css\" --fix"
+    ],
+    "**/*.{js,jsx,ts,tsx}*": [
+      "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+      "prettier --write ."
+    ],
+    "package.json": [
+      "npx sort-package-json"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "jest": "^26.5.3",
+    "lint-staged": "^10.4.2",
+    "materialize-css": "^1.0.0-rc.2",
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/prompt-cli": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "pretty-quick": "^3.1.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-standard": "^20.0.0",
+    "typescript": "^4.0.3"
+  }
+}
