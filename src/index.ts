@@ -1,4 +1,5 @@
 console.log('entra');
+console.log(process.env.NODE_ENV);
 
 const index = () => {
   const text = document.getElementsByClassName('text');
