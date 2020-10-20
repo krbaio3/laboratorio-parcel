@@ -19,8 +19,10 @@
   },
   "license": "MIT",
   "author": "KrBaIO3 <krbaio3@gmail.com>",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "scripts": {
+    "analyzed": "run-s build:prod analyzed:server",
+    "analyzed:server": "http-server -p 8001 ./dist -o /report.html",
     "build": "rimraf dist && parcel ./src/index.html",
     "build:prod": "rimraf dist && parcel build ./src/index.html",
     "precommit": "run-s format:fix lint",
@@ -29,7 +31,7 @@
     "format:fix": "pretty-quick --staged",
     "lint": "run-s eslint prettier",
     "prettier": "prettier --write .",
-    "start": "rimraf dist && parcel ./src/index.html --open",
+    "start": "rimraf dist && parcel serve ./src/index.html --open",
     "stylint": "stylelint \"src/**/*.{scss,css}\" --fix",
     "test": "jest"
   },
@@ -62,12 +64,16 @@
     "materialize-css": "^1.0.0-rc.2",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@commitlint/prompt-cli": "^11.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
     "commitizen": "^4.2.1",
@@ -75,8 +81,11 @@
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "http-server": "^0.12.3",
     "husky": "^4.3.0",
     "npm-run-all": "^4.1.5",
+    "parcel-plugin-bundle-visualiser": "^1.2.0",
+    "parcel-plugin-imagemin": "^4.0.1",
     "prettier": "^2.1.2",
     "pretty-quick": "^3.1.0",
     "sass": "^1.27.0",
@@ -86,5 +95,8 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.18.0",
     "typescript": "^4.0.3"
+  },
+  "engines": {
+    "node": ">=8.x"
   }
 }
